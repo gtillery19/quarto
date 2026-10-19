@@ -1,0 +1,30 @@
+---
+title: "My Second Quarto Document" 
+Author: Greta Tillery
+format: html
+execute:
+  echo: false
+---
+
+```{r}
+#|label: setup
+library(tidyverse)
+```
+
+
+```{r}
+iris_plot <- ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +
+  labs(
+    title = "Measurements for Different Species of Iris",
+    subtitle = "Virginica has the longest sepals",
+    x = "Sepal width (cm)",
+    y = "Sepal length (cm)",
+    color = "Species"
+  ) +
+  theme_minimal()
+
+ggsave("iris-scatterplot.png", plot = iris_plot, width = 8, height = 5, dpi = 300)
+
+iris_plot
+```
